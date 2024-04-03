@@ -54,7 +54,7 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0-alpha03")
     implementation ("androidx.navigation:navigation-ui-ktx:2.5.3")
     implementation ("androidx.navigation:navigation-fragment-ktx:2.5.3")
-
+    implementation("com.squareup.picasso:picasso:2.8")
     implementation("com.android.volley:volley:1.2.1")
     implementation("com.google.code.gson:gson:2.10.1")
 }

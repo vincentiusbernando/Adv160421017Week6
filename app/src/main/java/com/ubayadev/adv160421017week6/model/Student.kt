@@ -6,5 +6,5 @@ data class Student(
     val age:Int,
     val scores:List<Int>,
     val address:Address,
-    val img:String
+    val images:String
 )

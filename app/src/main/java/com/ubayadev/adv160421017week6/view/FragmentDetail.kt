@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.squareup.picasso.Picasso
 import com.ubayadev.adv160421017week6.R
 import com.ubayadev.adv160421017week6.databinding.FragmentDetailBinding
 import com.ubayadev.adv160421017week6.viewmodel.DetailViewModel
@@ -44,6 +45,10 @@ class FragmentDetail : Fragment() {
             binding.txtStreet.setText(it.address.street)
             binding.txtCity.setText(it.address.city)
             binding.txtCountry.setText(it.address.country)
+            var url=it.images
+            var builder= Picasso.Builder(requireContext())
+            builder.listener{picasso, uri, exception->exception.printStackTrace()}
+            builder.build().load(url).into(binding.imgProfil)
         })
 
     }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.ubayadev.adv160421017week6.databinding.StudentCardBinding
 import com.ubayadev.adv160421017week6.model.Student
 
@@ -18,9 +19,15 @@ class StudentListAdapter(val studentList:ArrayList<Student>) :RecyclerView.Adapt
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
         holder.binding.txtID.text = "ID : " + studentList[position].id
         holder.binding.txtName.text = studentList[position].name
+
+        var url=studentList[position].images
+        var builder= Picasso.Builder(holder.itemView.context)
+        builder.listener{picasso, uri, exception->exception.printStackTrace()}
+        builder.build().load(url).into(holder.binding.imgProfil)
+
         holder.binding.btnDetail.setOnClickListener {
             println(studentList[position].id)
-            val action = FragmentListDirections.ListToDetail(studentList[position].id)
+            val action = FragmentListDirections.actionFragmentListToFragmentDetail(studentList[position].id)
             Navigation.findNavController(it).navigate(action)
         }
     }
